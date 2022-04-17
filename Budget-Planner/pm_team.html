@@ -1,0 +1,81 @@
+<!--
+Assignment: Design Sell
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Budget Planner</title>
+        <link href="css/style.css" rel="stylesheet" />
+        <script src="js/utils.js"></script>
+    </head>
+    <body bgcolor="#ebebe4">
+
+        <div class="websiteTitle">
+            <h1>Collab Inc. Budget Planner</h1>
+            <h2>A simple way to plan your project budgets!</h2>
+        </div>
+
+        <style>
+            .nav{
+                margin-left: auto;
+                margin-right: auto;
+                height: 300px;
+                width: 500px;
+                border: 5px solid black;
+                border-radius: 30px;
+                margin-top: 50px;
+                text-align: center;
+            }
+
+            .pmDetails{
+                margin: 10px;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+
+            .pmPageTitle{
+                text-align: center;
+                font-size: 25px;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+        </style>
+
+
+        <p class="pmPageTitle">Project Managers</p>
+
+        <div class="nav">
+            <p class="pmPageTitle">Add New Budget</p>
+
+            <label class="pmDetails" for="clientName">Client Name: </label>
+            <input class="pmDetails" type="text" id="clientName"/>
+            <br/>
+
+            <label class="pmDetails" for="projectName">Project Name: </label>
+            <input class="pmDetails" type="text" id="projectName"/>
+            <br/>
+
+            <label class="pmDetails" for="budgetAmnt">Budget Amount: </label>
+            <input class="pmDetails" type="text" id="budgetAmnt"/>
+            <br/>
+            
+            <input type="button" value="Back" class="projectButton" class="backButton" onclick="document.location='index.html'">
+            <input type="button" value="Add" class="projectButton" onclick="storeData()">
+            <input type="button" value="Clear" class="projectButton" onclick="clearForm()">
+            
+        </div>
+
+        <script>
+            var NOTexists = checkDataExists()
+            if(NOTexists){
+                console.log("no data")
+            }
+            else{
+                console.log("data exists")
+            }
+            
+        </script>
+
+    </body>
+</html>

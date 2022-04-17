@@ -1,0 +1,101 @@
+<!--
+Assignment: Design Sell
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Budget Planner</title>
+        <link href="css/style.css" rel="stylesheet" />
+        <script src="js/utils.js"></script>
+        <script>
+
+            var total_budget = 0
+            function getDataFromStorage(){
+                
+                console.log(sessionStorage)
+
+                var json_project_data = sessionStorage.getItem("Project")
+                console.log(json_project_data)
+                project_data = JSON.parse(json_project_data)
+                console.log(project_data)
+
+                // Place data into table
+                var table = document.getElementById("projTable1")
+                var table_body = table.getElementsByTagName("tbody")[0]
+
+                for(var i = 0; i < project_data.length; i++){
+                    var new_row = table_body.insertRow(table_body.length)
+            
+                    var client_cell = new_row.insertCell(0)
+                    var project_cell = new_row.insertCell(1)
+                    var budget_cell = new_row.insertCell(2)
+                
+                    client_cell.innerHTML = project_data[i].client_name
+                    project_cell.innerHTML = project_data[i].project_name
+                    budget_cell.innerHTML = project_data[i].budget_amnt
+                    total_budget += parseInt(project_data[i].budget_amnt)   
+                }
+                
+                // Add the total row
+                console.log("Total Budget = " + total_budget)
+                addTotalBudget(table_body,total_budget)
+                
+            }
+
+            function addTotalBudget(table_body,total){
+                var new_row = table_body.insertRow(table_body.length)
+                var client_cell = new_row.insertCell(0)
+                var project_cell = new_row.insertCell(1)
+                var budget_cell = new_row.insertCell(2)
+            
+                client_cell.innerHTML = "Total Budget".bold()
+                project_cell.innerHTML = ""
+                budget_cell.innerHTML = total.toString().bold()
+
+            }
+        </script>
+    </head>
+    <body bgcolor="#ebebe4">
+
+        <style>
+            .nav{
+                margin-left: auto;
+                margin-right: auto;
+                height: 300px;
+                width: 500px;
+                border: 5px solid black;
+                border-radius: 30px;
+                margin-top: 50px;
+                text-align: center;
+            }
+        </style>
+        
+
+        <div class="websiteTitle">
+            <h1>Collab Inc. Budget Planner</h1>
+            <h2>A simple way to plan your project budgets!</h2>
+        </div>
+
+        
+        
+        <div class="nav">
+            <table id="projTable1" class="projectTable">
+                <thead>
+                    <th>Client Name</th>
+                    <th>Project Name</th>
+                    <th>Budget Amount</th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <input type="button" value="Back" class="projectButton" class="backButton" onclick="document.location='index.html'">
+        </div>
+        
+        <script>
+            getDataFromStorage()
+        </script>
+    </body>
+</html>
